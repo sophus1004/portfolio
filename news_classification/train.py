@@ -18,7 +18,7 @@ model_save_path = 'trained_models/test.pth'
 # 하이퍼파라미터 설정
 batch_size = 32
 num_epochs = 1
-learning_rate = 2e-5
+learning_rate = 1e-3
 
 # 학습 데이터셋 불러오기
 data_set = pd.read_excel(train_set_path)

@@ -12,13 +12,13 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from MultiClassDataset import MultiClassDataset
 
 # 경로 설정
-train_set_path = 'data/train_set.xlsx'
-model_save_path = 'trained_models/sample_model.pth'
+train_set_path = '/Users/chojw1004/Projects/data/language_detection/data/train_data.xlsx'
+model_save_path = '/Users/chojw1004/Projects/data/language_detection/trained_models'
 
 # 하이퍼파라미터 설정
 batch_size = 32
-num_epochs = 10
-learning_rate = 2e-5
+num_epochs = 3
+learning_rate = 1e-6
 
 # 학습 데이터셋 불러오기
 data_set = pd.read_excel(train_set_path)
@@ -40,14 +40,14 @@ model = BertForSequenceClassification.from_pretrained('bert-base-multilingual-un
 model.to(device)
 
 # 옵티마이저 설정
-optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+optimizer = optim.AdamW(model.parameters(), lr=learning_rate)
 
 # 손실 함수 설정
 criterion = nn.CrossEntropyLoss()
 
 # 데이터셋 및 데이터로더 설정
-train_dataset = MultiClassDataset(train_df, tokenizer, max_len=256, label_dict=label_dict)
-val_dataset = MultiClassDataset(val_df, tokenizer, max_len=256, label_dict=label_dict)
+train_dataset = MultiClassDataset(train_df, tokenizer, max_len=128, label_dict=label_dict)
+val_dataset = MultiClassDataset(val_df, tokenizer, max_len=128, label_dict=label_dict)
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
 
@@ -90,4 +90,5 @@ for epoch in range(num_epochs):
     print(f'Epoch: {epoch+1}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}, Val Acc: {correct/total:.4f}')
 
 # 모델 학습 후 저장
-torch.save(model.state_dict(), model_save_path)
+torch.save(model.state_dict(), '/Users/chojw1004/Projects/data/language_detection/torch_model.pt')
+model.save_pretrained(model_save_path)
