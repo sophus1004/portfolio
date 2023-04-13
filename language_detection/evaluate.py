@@ -4,8 +4,6 @@ import pickle
 from torch.utils.data import DataLoader
 from transformers import BertTokenizer, BertForSequenceClassification
 from MultiClassDataset import MultiClassDataset
-from konlpy.tag import Okt
-okt = Okt()
 
 # 경로 설정
 test_set_path = ''
