@@ -12,8 +12,8 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from MultiClassDataset import MultiClassDataset
 
 # 경로 설정
-train_set_path = '/Users/chojw1004/Projects/data/language_detection/data/train_data.xlsx'
-model_save_path = '/Users/chojw1004/Projects/data/language_detection/trained_models'
+train_set_path = ''
+model_save_path = 'trained_models'
 
 # 하이퍼파라미터 설정
 batch_size = 32

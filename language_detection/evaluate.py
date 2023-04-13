@@ -8,9 +8,9 @@ from konlpy.tag import Okt
 okt = Okt()
 
 # 경로 설정
-test_set_path = '/Users/chojw1004/Projects/data/language_detection/data/test_data.xlsx'
-save_result_path = '/Users/chojw1004/Projects/data/language_detection/data/result.xlsx'
-trained_model = '/Users/chojw1004/Projects/data/language_detection/trained_models'
+test_set_path = ''
+save_result_path = ''
+trained_model = 'trained_models'
 
 # 하이퍼파라미터 설정
 batch_size = 32
