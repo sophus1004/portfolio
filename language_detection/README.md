@@ -196,7 +196,7 @@ model.save_pretrained(model_save_path)
 
 - 검증 확도가 78%이상 올라가지 않는 문제가 발생
     
-    >> 레이블이 13개이다 보니 각 레이블 예측도가 큰 차이를 보여야 제대로 된 예측이 가능하다. 예를 ‘id’와 ‘vi’가 항상 비슷한 확률로 예측이 된다면 ‘Learning rate’의 값을 줄여 좀 더 깊은 최소값 지점을 찾을 필요가 있다.
+    > 레이블이 13개이다 보니 각 레이블 예측도가 큰 차이를 보여야 제대로 된 예측이 가능하다. 예를 ‘id’와 ‘vi’가 항상 비슷한 확률로 예측이 된다면 ‘Learning rate’의 값을 줄여 좀 더 깊은 최소값 지점을 찾을 필요가 있다.
     
 - ‘Learning rate’를 ‘1e-4’에서 ‘1e-6’으로 낮추어 해결
 
@@ -204,6 +204,6 @@ model.save_pretrained(model_save_path)
 
 - 적은 학습량에도 예측 정확도 100%를 가진 모델이 만들어 짐
     
-    >> 사전학습 모델로 사용된 'bert-base-multilingual-uncased' 102개 국어 각각의 문장으로 MLM과 NSP 학습이 되어 있는 모델이다. 트랜스포머의 셀프 어텐션을 사용한 MLM 학습은 각 토큰의 문맥적 상관관계에 대한 학습을 임베딩 값을 가지므로 분류 모델에서 업데이트 되는 임베딩 값에 그대로 반영된 것으로 보인다.
+    > 사전학습 모델로 사용된 'bert-base-multilingual-uncased' 102개 국어 각각의 문장으로 MLM과 NSP 학습이 되어 있는 모델이다. 트랜스포머의 셀프 어텐션을 사용한 MLM 학습은 각 토큰의 문맥적 상관관계에 대한 학습을 임베딩 값을 가지므로 분류 모델에서 업데이트 되는 임베딩 값에 그대로 반영된 것으로 보인다.
     
     [bert-base-multilingual-uncased · Hugging Face](https://huggingface.co/bert-base-multilingual-uncased)
