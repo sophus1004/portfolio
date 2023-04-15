@@ -6,8 +6,8 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from MultiClassDataset import MultiClassDataset
 
 # 경로 설정
-test_set_path = ''
-save_result_path = ''
+test_set_path = 'data/test_data.xlsx'
+save_result_path = 'data/result.xlsx'
 trained_model = 'trained_models'
 
 # 하이퍼파라미터 설정

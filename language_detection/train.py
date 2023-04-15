@@ -1,5 +1,3 @@
-# pip install transformers
-
 import pandas as pd
 import torch
 import torch.nn as nn
@@ -12,8 +10,9 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from MultiClassDataset import MultiClassDataset
 
 # 경로 설정
-train_set_path = ''
+train_set_path = 'data/train_data.xlsx'
 model_save_path = 'trained_models'
+pt_model_save_path = 'torch_model.pt'
 
 # 하이퍼파라미터 설정
 batch_size = 32
@@ -90,5 +89,5 @@ for epoch in range(num_epochs):
     print(f'Epoch: {epoch+1}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}, Val Acc: {correct/total:.4f}')
 
 # 모델 학습 후 저장
-torch.save(model.state_dict(), '/Users/chojw1004/Projects/data/language_detection/torch_model.pt')
+torch.save(model.state_dict(), pt_model_save_path)
 model.save_pretrained(model_save_path)

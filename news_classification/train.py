@@ -1,5 +1,3 @@
-# pip install transformers
-
 import pandas as pd
 import torch
 import torch.nn as nn
@@ -12,13 +10,14 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from MultiClassDataset import MultiClassDataset
 
 # 경로 설정
-train_set_path = ''
-model_save_path = 'trained_models'
+train_set_path = '/Users/chojw1004/Projects/data/news_classification/data/train_set.xlsx'
+model_save_path = '/Users/chojw1004/Projects/data/news_classification/trained_models'
+pt_model_save_path = '/Users/chojw1004/Projects/data/news_classification/torch_model.pt'
 
 # 하이퍼파라미터 설정
 batch_size = 32
 num_epochs = 3
-learning_rate = 1e-6
+learning_rate = 1e-8
 
 # 학습 데이터셋 불러오기
 data_set = pd.read_excel(train_set_path)
@@ -36,7 +35,7 @@ val_df.reset_index(drop=True, inplace=True)
 # 모델 설정
 device = torch.device('mps:0' if torch.backends.mps.is_available() else 'cpu')
 tokenizer = BertTokenizer.from_pretrained('bert-base-multilingual-uncased')
-model = BertForSequenceClassification.from_pretrained('bert-base-multilingual-uncased', num_labels=len(label_dict))
+model = BertForSequenceClassification.from_pretrained(model_save_path, num_labels=len(label_dict))
 model.to(device)
 
 # 옵티마이저 설정
@@ -46,8 +45,8 @@ optimizer = optim.AdamW(model.parameters(), lr=learning_rate)
 criterion = nn.CrossEntropyLoss()
 
 # 데이터셋 및 데이터로더 설정
-train_dataset = MultiClassDataset(train_df, tokenizer, max_len=128, label_dict=label_dict)
-val_dataset = MultiClassDataset(val_df, tokenizer, max_len=128, label_dict=label_dict)
+train_dataset = MultiClassDataset(train_df, tokenizer, max_len=192, label_dict=label_dict)
+val_dataset = MultiClassDataset(val_df, tokenizer, max_len=192, label_dict=label_dict)
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
 
@@ -90,5 +89,5 @@ for epoch in range(num_epochs):
     print(f'Epoch: {epoch+1}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}, Val Acc: {correct/total:.4f}')
 
 # 모델 학습 후 저장
-torch.save(model.state_dict(), '/Users/chojw1004/Projects/data/language_detection/torch_model.pt')
+torch.save(model.state_dict(), pt_model_save_path)
 model.save_pretrained(model_save_path)

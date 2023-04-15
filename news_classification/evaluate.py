@@ -4,13 +4,11 @@ import pickle
 from torch.utils.data import DataLoader
 from transformers import BertTokenizer, BertForSequenceClassification
 from MultiClassDataset import MultiClassDataset
-from konlpy.tag import Okt
-okt = Okt()
 
 # 경로 설정
-test_set_path = ''
-save_result_path = ''
-trained_model = 'trained_models'
+test_set_path = '/Users/chojw1004/Projects/data/news_classification/data/test_set.xlsx'
+save_result_path = '/Users/chojw1004/Projects/data/news_classification/data/result.xlsx'
+trained_model = '/Users/chojw1004/Projects/data/news_classification/trained_models'
 
 # 하이퍼파라미터 설정
 batch_size = 32
