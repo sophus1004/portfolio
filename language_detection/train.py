@@ -10,9 +10,9 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from MultiClassDataset import MultiClassDataset
 
 # 경로 설정
-train_set_path = 'data/train_data.xlsx'
-model_save_path = 'trained_models'
-pt_model_save_path = 'torch_model.pt'
+train_set_path = 'language_detection/data/train_data.xlsx'
+model_save_path = 'language_detection/trained_models'
+pt_model_save_path = 'language_detection/trained_models/torch_model.pt'
 
 # 하이퍼파라미터 설정
 batch_size = 32

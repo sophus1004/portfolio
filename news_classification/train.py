@@ -10,14 +10,14 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from MultiClassDataset import MultiClassDataset
 
 # 경로 설정
-train_set_path = '/Users/chojw1004/Projects/data/news_classification/data/train_set.xlsx'
-model_save_path = '/Users/chojw1004/Projects/data/news_classification/trained_models'
-pt_model_save_path = '/Users/chojw1004/Projects/data/news_classification/torch_model.pt'
+train_set_path = 'news_classification/data/train_set.xlsx'
+model_save_path = 'news_classification/trained_models'
+pt_model_save_path = 'news_classification/trained_models/torch_model.pt'
 
 # 하이퍼파라미터 설정
 batch_size = 32
-num_epochs = 3
-learning_rate = 1e-8
+num_epochs = 1
+learning_rate = 1e-5
 
 # 학습 데이터셋 불러오기
 data_set = pd.read_excel(train_set_path)
