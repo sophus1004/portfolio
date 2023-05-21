@@ -33,7 +33,7 @@ train_df.reset_index(drop=True, inplace=True)
 val_df.reset_index(drop=True, inplace=True)
 
 # 모델 설정
-device = torch.device('mps:0' if torch.backends.mps.is_available() else 'cpu')
+device = torch.device('mps:0')
 tokenizer = BertTokenizer.from_pretrained('bert-base-multilingual-uncased')
 model = BertForSequenceClassification.from_pretrained('bert-base-multilingual-uncased', num_labels=len(label_dict))
 model.to(device)
