@@ -1,0 +1,3 @@
+from ModuleClassification import ModuleClassification
+
+ModuleClassification.train()
